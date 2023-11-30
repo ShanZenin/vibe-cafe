@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #8b0000; /* Warna merah gelap */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .banner {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        form input {
+            margin: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #8b0000; /* Warna merah gelap */
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#">Home</a>
+        <a href="#">Online Order</a>
+    </header>
+        <!-- Banner -->
+        <div>
+            <img class="banner" src="cafe banner.jpg" alt="Banner Image">
+        </div>
+
+        <!-- Form -->
+        <div class="form-container">
+            <h2>breakfast pack</h2>
+            <form onsubmit="submitForm(); return false;">
+                <label for="username">atas nama:</label>
+                <input type="text" id="username" name="username" placeholder="isi nama anda">
+
+                <label for="address">alamat:</label>
+                <input type="text" id="address" name="address" placeholder="masukan alamat anda">
+
+                <label for="quantity">jumlah:</label>
+                <input type="number" id="quantity" name="quantity" placeholder="masukan jumlah pemesanan" oninput="calculatePrice()">
+
+                <button type="submit">Submit</button>
+
+                <div id="result"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2023 copyright by ajiz@gmail.com All rights reserved.
+    </footer>
+
+    <script>
+        function calculatePrice() {
+            var quantity = document.getElementById('quantity').value;
+            var pricePerItem = 33000; // Harga per barang, Anda dapat menyesuaikan sesuai kebutuhan
+
+            var totalPrice = quantity * pricePerItem;
+
+            var resultElement = document.getElementById('result');
+            resultElement.innerText = 'Total Price: Rp. ' + totalPrice.toLocaleString();
+        }
+
+        function submitForm() {
+            // Tambahan notifikasi
+            alert('Pemesanan berhasil! Harap tunggu selama pengiriman sampai.');
+
+            // Clear form setelah submit
+            document.getElementById('username').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('quantity').value = '';
+
+            // Clear hasil perhitungan
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+</body>
+</html>
